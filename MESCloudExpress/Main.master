@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Main.master.cs" Inherits="Main" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Manufacture Management</title>
+    <link href="~/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+         <asp:ScriptManager runat="server" EnablePartialRendering="false">
+            <Scripts>
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
+            </Scripts>
+        </asp:ScriptManager>
+        <div class="header">
+            <div class="title">
+                <h1>
+                    Manufacture Management
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem Text="Data Management">
+                            <asp:MenuItem Text="Transactions" NavigateUrl="~/ProductKeyIDSerialNumberPairs/List.aspx" />
+                            <asp:MenuItem Text="Data Identifiers" NavigateUrl="~/DBDataIdentifiers/List.aspx" />
+                            <asp:MenuItem Text="Data Items" NavigateUrl="~/DBDataItems/List.aspx" />
+                            <asp:MenuItem Text="Data Parameters" NavigateUrl="~/DBDataParameters/List.aspx" />
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Account Management">
+                            <asp:MenuItem Text="Change Password" NavigateUrl="~/Account/ChangePassword.aspx" />
+                            <asp:MenuItem Text="New User" NavigateUrl="~/Account/Register.aspx" />
+                            <asp:MenuItem Text="Users and Roles" NavigateUrl="~/Account/UserRoleManagement.aspx" />
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Settings">
+                            <asp:MenuItem Text="Barcode Printer Settings" NavigateUrl="~/PrinterConf.aspx" />
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>

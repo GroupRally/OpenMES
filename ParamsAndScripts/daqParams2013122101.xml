@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AcquisitionParameterSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ParameterBase xsi:type="NetworkParameter">
+    <LocalAddress />
+    <LocalPort>9050</LocalPort>
+  </ParameterBase>
+  <ParameterBase xsi:type="CameraParameter">
+    <Exposure>1666</Exposure>
+    <ExposureMax>200000</ExposureMax>
+    <ExposureMin>2</ExposureMin>
+    <Gain>20</Gain>
+    <GainMax>100</GainMax>
+    <GainMin>1</GainMin>
+    <AEAGLevel>40</AEAGLevel>
+    <ImageOutputFormat>JPEG</ImageOutputFormat>
+  </ParameterBase>
+  <ParameterBase xsi:type="BarcodeImagingParameter">
+    <ImageRotationDegree>2</ImageRotationDegree>
+    <IsExtractingBarCode>true</IsExtractingBarCode>
+  </ParameterBase>
+  <ParameterBase xsi:type="PersistencyParameter" />
+</AcquisitionParameterSet>

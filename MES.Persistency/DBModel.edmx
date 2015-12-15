@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DBModelStoreContainer">
+    <EntitySet Name="DBDataIdentifiers" EntityType="DBModel.Store.DBDataIdentifiers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DBDataItems" EntityType="DBModel.Store.DBDataItems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DBDataParameters" EntityType="DBModel.Store.DBDataParameters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductKeyIDSerialNumberPairs" EntityType="DBModel.Store.ProductKeyIDSerialNumberPairs" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DataIdentifierDataItem" Association="DBModel.Store.DataIdentifierDataItem">
+      <End Role="DataIdentifier" EntitySet="DBDataIdentifiers" />
+      <End Role="DataItem" EntitySet="DBDataItems" />
+    </AssociationSet>
+    <AssociationSet Name="DataItemDataParameter" Association="DBModel.Store.DataItemDataParameter">
+      <End Role="DataItem" EntitySet="DBDataItems" />
+      <End Role="DataParameter" EntitySet="DBDataParameters" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DBDataIdentifiers">
+    <Key>
+      <PropertyRef Name="DataUniqueID" />
+    </Key>
+    <Property Name="DataUniqueID" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="DataType" Type="int" Nullable="true" />
+    <Property Name="RawData" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="DBDataItems">
+    <Key>
+      <PropertyRef Name="DataItemID" />
+    </Key>
+    <Property Name="DataItemID" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="DataUniqueID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="DataBytes" Type="varbinary(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="Size" Type="bigint" Nullable="true" />
+    <Property Name="DeviceID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="LocationID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="CreationTime" Type="datetime" Nullable="false" />
+    <Property Name="DataIdentifierDataUniqueID" Type="nvarchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="DBDataParameters">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="DataItemID" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Value" Type="nvarchar" Nullable="true" MaxLength="300" />
+    <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="DataItemDataItemID" Type="nvarchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ProductKeyIDSerialNumberPairs">
+    <Key>
+      <PropertyRef Name="PairID" />
+    </Key>
+    <Property Name="PairID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TransactionID" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="ProductKeyID" Type="bigint" Nullable="true" />
+    <Property Name="SerialNumber" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="SeriesID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="SeriesName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="ModelID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="ModelName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="DeviceID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="DeviceName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="OperatorID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="OperatorName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="StationID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="StationName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="LineID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="LineName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="BusinessID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="BusinessName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="OrderID" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="ReadCount" Type="int" Nullable="true" />
+    <Property Name="CreationTime" Type="datetime" Nullable="true" />
+    <Property Name="ModificationTime" Type="datetime" Nullable="true" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="500" />
+  </EntityType>
+  <Association Name="DataIdentifierDataItem">
+    <End Role="DataIdentifier" Type="DBModel.Store.DBDataIdentifiers" Multiplicity="1" />
+    <End Role="DataItem" Type="DBModel.Store.DBDataItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DataIdentifier">
+        <PropertyRef Name="DataUniqueID" />
+      </Principal>
+      <Dependent Role="DataItem">
+        <PropertyRef Name="DataIdentifierDataUniqueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DataItemDataParameter">
+    <End Role="DataItem" Type="DBModel.Store.DBDataItems" Multiplicity="1" />
+    <End Role="DataParameter" Type="DBModel.Store.DBDataParameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DataItem">
+        <PropertyRef Name="DataItemID" />
+      </Principal>
+      <Dependent Role="DataParameter">
+        <PropertyRef Name="DataItemDataItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DBModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DBDataIdentifiers" EntityType="DBModel.DBDataIdentifier" />
+          <EntitySet Name="DBDataItems" EntityType="DBModel.DBDataItem" />
+          <EntitySet Name="DBDataParameters" EntityType="DBModel.DBDataParameter" />
+          <AssociationSet Name="DataIdentifierDataItem" Association="DBModel.DataIdentifierDataItem">
+            <End Role="DataIdentifier" EntitySet="DBDataIdentifiers" />
+            <End Role="DataItem" EntitySet="DBDataItems" />
+          </AssociationSet>
+          <AssociationSet Name="DataItemDataParameter" Association="DBModel.DataItemDataParameter">
+            <End Role="DataItem" EntitySet="DBDataItems" />
+            <End Role="DataParameter" EntitySet="DBDataParameters" />
+          </AssociationSet>
+          <EntitySet Name="ProductKeyIDSerialNumberPairs" EntityType="DBModel.ProductKeyIDSerialNumberPairs" />
+        </EntityContainer>
+        <EntityType Name="DBDataIdentifier">
+          <Key>
+            <PropertyRef Name="DataUniqueID" />
+          </Key>
+          <Property Type="String" Name="DataUniqueID" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="DataType" Type="DBModel.DBDataType" Nullable="true" />
+          <Property Type="Binary" Name="RawData" Nullable="true" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="DataItems" Relationship="DBModel.DataIdentifierDataItem" FromRole="DataIdentifier" ToRole="DataItem" />
+        </EntityType>
+        <EntityType Name="DBDataItem">
+          <Key>
+            <PropertyRef Name="DataItemID" />
+          </Key>
+          <Property Type="String" Name="DataItemID" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="200" />
+          <Property Type="String" Name="DataUniqueID" Nullable="true" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Type="Binary" Name="DataBytes" Nullable="true" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Type="Int64" Name="Size" Nullable="true" />
+          <Property Type="String" Name="DeviceID" Nullable="true" MaxLength="200" Unicode="true" />
+          <Property Type="String" Name="LocationID" Nullable="true" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Type="DateTime" Name="CreationTime" Nullable="false" />
+          <NavigationProperty Name="DataIdentifier" Relationship="DBModel.DataIdentifierDataItem" FromRole="DataItem" ToRole="DataIdentifier" />
+          <Property Type="String" Name="DataIdentifierDataUniqueID" Nullable="false" FixedLength="false" Unicode="true" MaxLength="200" />
+          <NavigationProperty Name="DataParameters" Relationship="DBModel.DataItemDataParameter" FromRole="DataItem" ToRole="DataParameter" />
+        </EntityType>
+        <EntityType Name="DBDataParameter" >
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="String" Name="DataItemID" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="DataItem" Relationship="DBModel.DataItemDataParameter" FromRole="DataParameter" ToRole="DataItem" />
+          <Property Type="String" Name="DataItemDataItemID" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <Association Name="DataIdentifierDataItem">
+          <End Type="DBModel.DBDataIdentifier" Role="DataIdentifier" Multiplicity="1" />
+          <End Type="DBModel.DBDataItem" Role="DataItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataIdentifier">
+              <PropertyRef Name="DataUniqueID" />
+            </Principal>
+            <Dependent Role="DataItem">
+              <PropertyRef Name="DataIdentifierDataUniqueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DataItemDataParameter">
+          <End Type="DBModel.DBDataItem" Role="DataItem" Multiplicity="1" />
+          <End Type="DBModel.DBDataParameter" Role="DataParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataItem">
+              <PropertyRef Name="DataItemID" />
+            </Principal>
+            <Dependent Role="DataParameter">
+              <PropertyRef Name="DataItemDataItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductKeyIDSerialNumberPairs">
+          <Key>
+            <PropertyRef Name="PairID" />
+          </Key>
+          <Property Name="PairID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="TransactionID" Type="String" Nullable="true" MaxLength="150" />
+          <Property Name="ProductKeyID" Type="Int64" Nullable="true" />
+          <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="200" />
+          <Property Name="SeriesID" Type="String" Nullable="true" MaxLength="200" />
+          <Property Name="SeriesName" Type="String" Nullable="true" MaxLength="250" />
+          <Property Name="ModelID" Type="String" Nullable="true" MaxLength="200" />
+          <Property Name="ModelName" Type="String" Nullable="true" MaxLength="250" />
+          <Property Name="DeviceID" Type="String" Nullable="true" MaxLength="200" />
+          <Property Name="DeviceName" Type="String" Nullable="true" MaxLength="250" />
+          <Property Name="OperatorID" Type="String" Nullable="true" MaxLength="200" />
+          <Property Name="OperatorName" Type="String" Nullable="true" MaxLength="250" />
+          <Property Name="StationID" Type="String" Nullable="true" MaxLength="200" />
+          <Property Name="StationName" Type="String" Nullable="true" MaxLength="250" />
+          <Property Name="LineID" Type="String" Nullable="true" MaxLength="200" />
+          <Property Name="LineName" Type="String" Nullable="true" MaxLength="250" />
+          <Property Name="BusinessID" Type="String" Nullable="true" MaxLength="200" />
+          <Property Name="BusinessName" Type="String" Nullable="true" MaxLength="250" />
+          <Property Name="OrderID" Type="String" Nullable="true" MaxLength="200" />
+          <Property Name="ReadCount" Type="Int32" Nullable="true" />
+          <Property Name="CreationTime" Type="DateTime" Nullable="true" />
+          <Property Name="ModificationTime" Type="DateTime" Nullable="true" />
+          <Property Name="Remarks" Type="String" Nullable="true" MaxLength="500" />
+        </EntityType>
+        <EnumType Name="DBDataType">
+          <Member Name="Default" Value="0" />
+          <Member Name="AcquisitionResult" Value="1" />
+          <Member Name="TestResult" Value="2" />
+          <Member Name="TransactionStream" Value="3" />
+          <Member Name="PrintingRecord" Value="4" />
+          <Member Name="Other" Value="5" />
+        </EnumType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBModelContainer">
+    <EntitySetMapping Name="DBDataIdentifiers">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.DBDataIdentifier)">
+        <MappingFragment StoreEntitySet="DBDataIdentifiers">
+          <ScalarProperty Name="DataUniqueID" ColumnName="DataUniqueID" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="RawData" ColumnName="RawData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBDataItems">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.DBDataItem)">
+        <MappingFragment StoreEntitySet="DBDataItems">
+          <ScalarProperty Name="DataItemID" ColumnName="DataItemID" />
+          <ScalarProperty Name="DataUniqueID" ColumnName="DataUniqueID" />
+          <ScalarProperty Name="DataBytes" ColumnName="DataBytes" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+          <ScalarProperty Name="DataIdentifierDataUniqueID" ColumnName="DataIdentifierDataUniqueID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBDataParameters">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.DBDataParameter)">
+        <MappingFragment StoreEntitySet="DBDataParameters">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DataItemID" ColumnName="DataItemID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DataItemDataItemID" ColumnName="DataItemDataItemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductKeyIDSerialNumberPairs">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.ProductKeyIDSerialNumberPairs)">
+        <MappingFragment StoreEntitySet="ProductKeyIDSerialNumberPairs">
+          <ScalarProperty Name="PairID" ColumnName="PairID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="ProductKeyID" ColumnName="ProductKeyID" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="SeriesID" ColumnName="SeriesID" />
+          <ScalarProperty Name="SeriesName" ColumnName="SeriesName" />
+          <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+          <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+          <ScalarProperty Name="OperatorName" ColumnName="OperatorName" />
+          <ScalarProperty Name="StationID" ColumnName="StationID" />
+          <ScalarProperty Name="StationName" ColumnName="StationName" />
+          <ScalarProperty Name="LineID" ColumnName="LineID" />
+          <ScalarProperty Name="LineName" ColumnName="LineName" />
+          <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ReadCount" ColumnName="ReadCount" />
+          <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+          <ScalarProperty Name="ModificationTime" ColumnName="ModificationTime" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

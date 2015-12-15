@@ -1,0 +1,188 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using ImageAcquisition.Persistency;
+
+namespace ProductManagementCloud.Services
+{
+    /// <summary>
+    /// Summary description for ProductManagementService
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [System.ComponentModel.ToolboxItem(false)]
+    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+    // [System.Web.Script.Services.ScriptService]
+    public class ProductManagementService : System.Web.Services.WebService
+    {
+
+        //[WebMethod]
+        //public string HelloWorld()
+        //{
+        //    return "Hello World";
+        //}
+
+        /// <summary>
+        /// Gets machine serial number(s) that is (are) correlated with the specified product key ID
+        /// </summary>
+        /// <param name="ProductKeyID">OA3.0 DPK ID</param>
+        /// <returns>Machine serial number(s) that is (are) correlated with the specified product key ID</returns>
+        [WebMethod]
+        public string[] GetSerialNumber(long ProductKeyID) 
+        {
+            string[] returnValue = null;
+
+            using (DBModelContainer context = new DBModelContainer())
+            {
+               List<string> serialNumbers = new List<string>();
+
+               ProductKeyIDSerialNumberPairs[] pairs = context.ProductKeyIDSerialNumberPairs.Where((o) => o.ProductKeyID == ProductKeyID).ToArray();
+
+               foreach (ProductKeyIDSerialNumberPairs pair in pairs)
+               {
+                   serialNumbers.Add(pair.SerialNumber);
+               }
+
+               returnValue = serialNumbers.ToArray();
+            }
+
+            return returnValue;
+        }
+
+        /// <summary>
+        /// Gets the pair that is earlist recorded distinguished by creation time
+        /// </summary>
+        /// <returns>The pair that is earlist recorded distinguished by creation time</returns>
+        [WebMethod]
+        public ProductKeyIDSerialNumberPairs GetPair() 
+        {
+            ProductKeyIDSerialNumberPairs returnValue = null;
+
+            using (DBModelContainer context = new DBModelContainer())
+            {
+                var rawPairs = context.ProductKeyIDSerialNumberPairs.Where((o) => (o.ProductKeyID == null));
+
+                if (rawPairs != null)
+                {
+                    ProductKeyIDSerialNumberPairs[] pairs = rawPairs.OrderBy((p) => (p.CreationTime)).ToArray();
+
+                    if ((pairs != null) && (pairs.Length > 0))
+                    {
+                        returnValue = pairs[0];
+                    }
+                }
+            }
+
+            return returnValue;
+        }
+
+        /// <summary>
+        /// Gets product key ID (s) that is (are) correlated with the specified machine serial number 
+        /// </summary>
+        /// <param name="SerialNumber">Machine serial number</param>
+        /// <returns>Product key ID (s) that is (are) correlated with the specified machine serial number</returns>
+        [WebMethod]
+        public long?[] GetProductKeyID(string SerialNumber)
+        {
+            long?[] returnValue = null;
+
+            using (DBModelContainer context = new DBModelContainer())
+            {
+                List<long?> productKeyIDs = new List<long?>();
+
+                ProductKeyIDSerialNumberPairs[] pairs = context.ProductKeyIDSerialNumberPairs.Where((o) => o.SerialNumber.ToLower() == SerialNumber.ToLower()).ToArray();
+
+                foreach (ProductKeyIDSerialNumberPairs pair in pairs)
+                {
+                    productKeyIDs.Add(pair.ProductKeyID);
+                }
+
+                returnValue = productKeyIDs.ToArray();
+            }
+
+            return returnValue;
+        }
+
+        /// <summary>
+        /// Adds a pair of product key ID - machine serial number correlation
+        /// </summary>
+        /// <param name="ProductKeyID">OA3.0 DPK ID</param>
+        /// <param name="SerialNumber">Machine serial number</param>
+        /// <returns>Execution result</returns>
+        [WebMethod]
+        public string AddPair(long ProductKeyID, string SerialNumber) 
+        {
+            Guid pairID = Guid.NewGuid();
+
+            using (DBModelContainer context = new DBModelContainer())
+            {
+                context.ProductKeyIDSerialNumberPairs.Add(new ProductKeyIDSerialNumberPairs() 
+                {
+                     PairID = pairID,
+                     ProductKeyID = ProductKeyID,
+                     SerialNumber = SerialNumber,
+                     CreationTime = DateTime.Now
+                });
+
+                context.SaveChanges();
+            }
+
+            return pairID.ToString();
+        }
+
+        /// <summary>
+        /// Adds a raw pair with only machine serial number
+        /// </summary>
+        /// <param name="TransactionID">TransactionID</param>
+        /// <param name="SerialNumber">Machine serial number</param>
+        /// <returns>Execution result</returns>
+        [WebMethod]
+        public string AddRawPair(string TransactionID, string SerialNumber)
+        {
+            Guid pairID = Guid.NewGuid();
+
+            using (DBModelContainer context = new DBModelContainer())
+            {
+                context.ProductKeyIDSerialNumberPairs.Add(new ProductKeyIDSerialNumberPairs()
+                {
+                    PairID = pairID,
+                    TransactionID = TransactionID,
+                    SerialNumber = SerialNumber,
+                    CreationTime = DateTime.Now
+                });
+
+                context.SaveChanges();
+            }
+
+            return pairID.ToString();
+        }
+
+        /// <summary>
+        /// Sets a pair with product key ID - machine serial number correlation 
+        /// </summary>
+        /// <param name="TransactionID">TransactionID</param>
+        /// <param name="SerialNumber">Machine serial number</param>
+        /// <param name="ProductKeyID">OA3.0 DPK ID</param>
+        /// <returns>Execution result</returns>
+        [WebMethod]
+        public string SetPair(string TransactionID, string SerialNumber, long ProductKeyID)
+        {
+            string returnValue = "";
+
+            using (DBModelContainer context = new DBModelContainer())
+            {
+                ProductKeyIDSerialNumberPairs pair = context.ProductKeyIDSerialNumberPairs.FirstOrDefault((o) => (o.SerialNumber.ToLower() == SerialNumber.ToLower()) && (o.TransactionID.ToLower() == TransactionID.ToLower()));
+
+                pair.ProductKeyID = ProductKeyID;
+
+                returnValue = pair.PairID.ToString();
+
+                context.SaveChanges();
+            }
+
+            return returnValue;
+        }
+    }
+}

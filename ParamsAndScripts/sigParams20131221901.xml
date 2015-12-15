@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SignalParameterSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ParameterBase xsi:type="NetworkParameter">
+    <LocalAddress />
+  </ParameterBase>
+  <ParameterBase xsi:type="SerialPortParameter">
+    <SerialPortDataBits>8</SerialPortDataBits>
+    <SerialPortBaudRate>9600</SerialPortBaudRate>
+    <SerialPortName>COM8</SerialPortName>
+    <SerialPortStopBits>One</SerialPortStopBits>
+    <SerialPortHandShake>None</SerialPortHandShake>
+    <SerialPortParity>None</SerialPortParity>
+    <SerialPortReadTimeout>500</SerialPortReadTimeout>
+    <SerialPortWriteTimeout>500</SerialPortWriteTimeout>
+    <SerialPortReadBufferSize>4096</SerialPortReadBufferSize>
+    <SerialPortWriteBufferSize>4096</SerialPortWriteBufferSize>
+    <SerialPortRtsEnable>true</SerialPortRtsEnable>
+    <SerialPortDtrEnable>true</SerialPortDtrEnable>
+    <SerialPortEncodingCodePage>20127</SerialPortEncodingCodePage>
+    <SerialPortMode>TeachIn</SerialPortMode>
+    <SerialPortExpectedDataValue>
+      <string>7</string>
+      <string>8</string>
+      <string>9</string>
+    </SerialPortExpectedDataValue>
+  </ParameterBase>
+  <ParameterBase xsi:type="TimerParameter" />
+  <ParameterBase xsi:type="PersistencyParameter" />
+</SignalParameterSet>

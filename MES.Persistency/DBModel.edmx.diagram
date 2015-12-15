@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b3a18bec5f2f488db433418a678f9fcf" Name="Diagram" ZoomLevel="97" >
+        <EntityTypeShape EntityType="DBModel.DBDataIdentifier" Width="2.125" PointX="1" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.DBDataItem" Width="4.75" PointX="4.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.DBDataParameter" Width="3.375" PointX="9.875" PointY="1.25" />
+        <AssociationConnector Association="DBModel.DataIdentifierDataItem" />
+        <AssociationConnector Association="DBModel.DataItemDataParameter" />
+        <EntityTypeShape EntityType="DBModel.ProductKeyIDSerialNumberPairs" Width="2.125" PointX="1.5" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

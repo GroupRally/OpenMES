@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AcquisitionParameterSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ParameterBase xsi:type="NetworkParameter">
+    <LocalAddress />
+    <LocalPort>9050</LocalPort>
+  </ParameterBase>
+  <ParameterBase xsi:type="CameraParameter">
+    <Exposure>1666</Exposure>
+    <ExposureMax>200000</ExposureMax>
+    <ExposureMin>2</ExposureMin>
+    <Gain>27</Gain>
+    <GainMax>100</GainMax>
+    <GainMin>1</GainMin>
+    <AEAGLevel>40</AEAGLevel>
+    <ImageDataFormat>RAW8</ImageDataFormat>
+    <ImageOutputFormat>JPEG</ImageOutputFormat>
+    <FrameRate>23.5427055</FrameRate>
+    <DeviceName>MQ013MG-E2</DeviceName>
+    <DeviceSN>21305050</DeviceSN>
+    <DeviceType>USB3.0</DeviceType>
+    <DeviceInstancePath>\\?\usb#vid_20f7&amp;pid_3001#6&amp;114cb089&amp;0&amp;4#{ae18aa60-7f6a-11d4-97dd-00010229b959}</DeviceInstancePath>
+    <AvailableBandWidth>268</AvailableBandWidth>
+    <ExposurePriority>0.95</ExposurePriority>
+  </ParameterBase>
+  <ParameterBase xsi:type="BarcodeImagingParameter">
+    <IsExtractingBarCode>true</IsExtractingBarCode>
+  </ParameterBase>
+  <ParameterBase xsi:type="PersistencyParameter">
+    <PersistencyType>RDBMS</PersistencyType>
+    <DataStore>D:\ImageAcquisition\Acquired</DataStore>
+  </ParameterBase>
+</AcquisitionParameterSet>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<BarcodePrintingParameter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PrinterName></PrinterName>
+  <BarcodeFontSize>0</BarcodeFontSize>
+  <BarcodeXPosition>1</BarcodeXPosition>
+  <BarcodeYPosition>16</BarcodeYPosition>
+  <CaptionFontSize>0</CaptionFontSize>
+  <CaptionXPosition>0</CaptionXPosition>
+  <CaptionYPosition>0</CaptionYPosition>
+  <IsPrintingCaption>true</IsPrintingCaption>
+  <BarcodeImageHeight>45</BarcodeImageHeight>
+  <BarcodeImageWidth>86</BarcodeImageWidth>
+  <BarcodeType>CODE_39</BarcodeType>
+  <BarcodeLabelPaperWidth>98</BarcodeLabelPaperWidth>
+  <BarcodeLabelPaperHeight>59</BarcodeLabelPaperHeight>
+</BarcodePrintingParameter>

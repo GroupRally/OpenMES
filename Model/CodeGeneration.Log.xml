@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 11.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2013-10-28T15:38:19" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2013-10-28T15:38:20" Importance="Diagnostic" Text="Name = ClassTemplate" />
+  <Message Timestamp="2013-10-28T15:38:20" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2013-10-28T15:38:20" Importance="Diagnostic" Text="ProjectPath = ..\ModelLib\ModelLib.csproj" />
+  <Message Timestamp="2013-10-28T15:38:20" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2013-10-28T15:38:20" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2013-10-28T15:38:20" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2013-10-28T15:38:20" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4" />
+  <Message Timestamp="2013-10-28T15:38:20" Importance="Medium" Text="Model's Text Template Binding: 'ClassTemplate' will apply ClassTemplate.t4 to: 'Model::DataIdentifier' -  (Class), 'Model::DataItem' -  (Class), 'Model::InfraredDetector' -  (Class), 'Model::SoundDetector' -  (Class), 'Model::BarCodeDetector' -  (Class), 'Model::DataPair' -  (Class), 'Model::Result' -  (Class) " />
+  <Message Timestamp="2013-10-28T15:38:50" Importance="Medium" Text="Project Added: C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\ModelLib.csproj" />
+  <Message Timestamp="2013-10-28T15:38:50" Importance="Medium" Text="'Model::DataIdentifier' -  (Class) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\DataIdentifier.cs" />
+  <Message Timestamp="2013-10-28T15:38:51" Importance="Medium" Text="'Model::DataItem' -  (Class) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\DataItem.cs" />
+  <Message Timestamp="2013-10-28T15:38:51" Importance="Medium" Text="'Model::InfraredDetector' -  (Class) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\InfraredDetector.cs" />
+  <Message Timestamp="2013-10-28T15:38:51" Importance="Medium" Text="'Model::SoundDetector' -  (Class) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\SoundDetector.cs" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Medium" Text="'Model::BarCodeDetector' -  (Class) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\BarCodeDetector.cs" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Medium" Text="'Model::DataPair' -  (Class) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\DataPair.cs" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Medium" Text="'Model::Result' -  (Class) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\Result.cs" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Diagnostic" Text="Name = InterfaceTemplate" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Diagnostic" Text="ProjectPath = ..\ModelLib\ModelLib.csproj" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2013-10-28T15:38:52" Importance="Medium" Text="Model's Text Template Binding: 'InterfaceTemplate' will apply InterfaceTemplate.t4 to: 'Model::IDetector' -  (Interface), 'Model::IAcquirer' -  (Interface), 'Model::ICorrelator' -  (Interface), 'Model::IProcessor' -  (Interface) " />
+  <Message Timestamp="2013-10-28T15:38:53" Importance="Medium" Text="'Model::IDetector' -  (Interface) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\IDetector.cs" />
+  <Message Timestamp="2013-10-28T15:38:53" Importance="Medium" Text="'Model::IAcquirer' -  (Interface) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\IAcquirer.cs" />
+  <Message Timestamp="2013-10-28T15:38:53" Importance="Medium" Text="'Model::ICorrelator' -  (Interface) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\ICorrelator.cs" />
+  <Message Timestamp="2013-10-28T15:38:53" Importance="Medium" Text="'Model::IProcessor' -  (Interface) : success (file created) - C:\Users\v-rawang\Documents\Visual Studio 2012\Projects\ImageAcquisition\ModelLib\GeneratedCode\IProcessor.cs" />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="Name = StructTemplate" />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="ProjectPath = ..\ModelLib\ModelLib.csproj" />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="TemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="ResolvedTemplateFilePath = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4" />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Medium" Text="Model's Text Template Binding: 'StructTemplate' will apply StructTemplate.t4 to: 'Model::DataIdentifier' -  (Class), 'Model::DataItem' -  (Class), 'Model::InfraredDetector' -  (Class), 'Model::SoundDetector' -  (Class), 'Model::BarCodeDetector' -  (Class), 'Model::DataPair' -  (Class), 'Model::Result' -  (Class) " />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="'Model::DataIdentifier' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="'Model::DataItem' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="'Model::InfraredDetector' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="'Model::SoundDetector' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-28T15:38:54" Importance="Diagnostic" Text="'Model::BarCodeDetector' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-28T15:38:55" Importance="Diagnostic" Text="'Model::DataPair' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-28T15:38:55" Importance="Diagnostic" Text="'Model::Result' -  (Class): no file generated because the 'AppliesToElement' method of the template 'StructTemplate.t4' evaluated to false." />
+  <Message Timestamp="2013-10-28T15:38:55" Importance="Diagnostic" Text="The selection included 3 elements which were not bound to a template." />
+  <Message Timestamp="2013-10-28T15:38:55" Importance="Diagnostic" Text="'Model::' -  (InterfaceRealization): no bound template." />
+  <Message Timestamp="2013-10-28T15:38:55" Importance="Diagnostic" Text="'Model::' -  (InterfaceRealization): no bound template." />
+  <Message Timestamp="2013-10-28T15:38:55" Importance="Diagnostic" Text="'Model::' -  (InterfaceRealization): no bound template." />
+  <Message Timestamp="2013-10-28T15:38:55" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+</Log>
